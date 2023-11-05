@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-mongoose.connect(process.env.MONGO_URI, {useUnifiedTopology: true});
+mongoose.connect(process.env.MONGO_URI, {useUnifiedTopology: true, useNewUrlParser: true});
 
 const personSchema = new mongoose.Schema({
   name: {
