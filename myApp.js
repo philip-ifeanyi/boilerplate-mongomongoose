@@ -74,11 +74,11 @@ const queryChain = (done) => {
   done(null /*, data*/);
 };
 
-app.get('/', (req, res) => {
-  console.log("HomePage Connected")
-  console.log(`${req.method} ${req.url} ${req.path}`)
-  res.sendFile(__dirname + '/views/index.html')
-})
+// app.get('/', (req, res) => {
+//   console.log("HomePage Connected")
+//   console.log(`${req.method} ${req.url} ${req.path}`)
+//   res.sendFile(__dirname + '/views/index.html')
+// })
 
 // app.listen(8080, ()=> {
 //   console.log("App is live! @ PORT 8080")
