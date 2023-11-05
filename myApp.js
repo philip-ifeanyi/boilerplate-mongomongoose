@@ -7,9 +7,22 @@ const app = express();
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true, 
   useUnifiedTopology: true 
+}).then(() => {
+  console.log('Database connection successful');
+}).catch((err) => {
+  console.error('Database connection error');
 });
 
-let Person;
+const personSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  age: Number,
+  favoriteFoods: Array
+});
+
+const Person = mongoose.model('Person', personSchema);
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
@@ -65,9 +78,9 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html')
 })
 
-app.listen(8080, ()=> {
-  console.log("App is live! @ PORT 8080")
-})
+// app.listen(8080, ()=> {
+//   console.log("App is live! @ PORT 8080")
+// })
 
 /** **Well Done !!**
 /* You completed these challenges, let's go celebrate !
