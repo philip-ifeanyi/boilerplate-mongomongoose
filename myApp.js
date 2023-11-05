@@ -4,14 +4,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true, 
-  useUnifiedTopology: true 
-}).then(() => {
-  console.log('Database connection successful');
-}).catch((err) => {
-  console.error('Database connection error');
-});
+mongoose.connect(process.env.MONGO_URI, {useUnifiedTopology: true});
 
 const personSchema = new mongoose.Schema({
   name: {
@@ -19,20 +12,20 @@ const personSchema = new mongoose.Schema({
     required: true
   },
   age: Number,
-  favoriteFoods: Array
+  favoriteFoods: [String]
 });
 
 const Person = mongoose.model('Person', personSchema);
 
 const createAndSavePerson = (done) => {
   const user = new Person({
-    name: 'John',
+    name: 'John Doe',
     age: 36,
     favoriteFoods: ['rice', 'cheese', 'orange']
   })
 
   user.save((err, data) => {
-    if(err) return console.error(err);
+    if (err) return console.error(err);
     done(null, data);
   });
 };
