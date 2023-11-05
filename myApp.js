@@ -31,13 +31,10 @@ const createAndSavePerson = (done) => {
     favoriteFoods: ['rice', 'cheese', 'orange']
   })
 
-  user.save(function(err, data) {
-    if(err) {
-      console.error(err);
-    }
+  user.save((err, data) => {
+    if(err) return console.error(err);
     done(null, data);
   });
-  
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
