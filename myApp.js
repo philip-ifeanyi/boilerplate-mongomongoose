@@ -1,11 +1,13 @@
 require('dotenv').config();
-const mongoose = require('mongoose')
+const express = require('express');
+const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGO_URI,
-{
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+const app = express();
+
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true, 
+  useUnifiedTopology: true 
+});
 
 let Person;
 
@@ -56,6 +58,16 @@ const queryChain = (done) => {
 
   done(null /*, data*/);
 };
+
+app.get('/', (req, res) => {
+  console.log("HomePage Connected")
+  console.log(`${req.method} ${req.url} ${req.path}`)
+  res.sendFile(__dirname + '/views/index.html')
+})
+
+app.listen(8080, ()=> {
+  console.log("App is live! @ PORT 8080")
+})
 
 /** **Well Done !!**
 /* You completed these challenges, let's go celebrate !
