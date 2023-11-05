@@ -26,7 +26,7 @@ const createAndSavePerson = (done) => {
 
   janeFonda.save(function(err, data) {
     if (err) return console.error(err);
-    done(null, data)
+    done(null, data);
   });
 };
 
@@ -53,8 +53,10 @@ const createManyPeople = (arrayOfPeople, done) => {
       favoriteFoods: ["eggs", "fish", "vegetables"]
     }
   ]
-  Person.create(arrayOfPeople)
-  done(null /*, data*/);
+  Person.create(arrayOfPeople, (err, data)=> {
+    if (err) return console.error(err);
+    done(null, data);
+  });
 };
 
 const findPeopleByName = (personName, done) => {
