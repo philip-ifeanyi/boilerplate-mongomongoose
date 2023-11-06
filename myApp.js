@@ -1,3 +1,5 @@
+"use strict";
+
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
@@ -30,8 +32,8 @@ const createAndSavePerson = (done) => {
   });
 };
 
-const createManyPeople = (arrayOfPeople, done) => {
-  arrayOfPeople = [
+const createManyPeople = (done) => {
+  const arrayOfPeople = [
     {
       name: "Jane Fonda", 
       age: 84, 
@@ -53,7 +55,7 @@ const createManyPeople = (arrayOfPeople, done) => {
       favoriteFoods: ["eggs", "fish", "vegetables"]
     }
   ]
-  Person.create(arrayOfPeople, (err, data)=> {
+  Person.create(arrayOfPeople, (err, data) => {
     if (err) return console.error(err);
     done(null, data);
   });
