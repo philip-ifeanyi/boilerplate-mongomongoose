@@ -32,28 +32,28 @@ const createAndSavePerson = (done) => {
   });
 };
 
-var arrayOfPeople = [
-  {
-    name: "Jane Fonda", 
-    age: 84, 
-    favoriteFoods: ["eggs", "fish", "fresh fruit"]
-  },
-  {
-    name: "Jane Doe", 
-    age: 24, 
-    favoriteFoods: ["bacon", "fish", "fresh fruit"]
-  },
-  {
-    name: "John Fonda", 
-    age: 94, 
-    favoriteFoods: ["eggs", "meat", "fresh fruit"]
-  },
-  {
-    name: "John Doe", 
-    age: 34, 
-    favoriteFoods: ["eggs", "fish", "vegetables"]
-  }
-]
+// var arrayOfPeople = [
+//   {
+//     name: "Jane Fonda", 
+//     age: 84, 
+//     favoriteFoods: ["eggs", "fish", "fresh fruit"]
+//   },
+//   {
+//     name: "Jane Doe", 
+//     age: 24, 
+//     favoriteFoods: ["bacon", "fish", "fresh fruit"]
+//   },
+//   {
+//     name: "John Fonda", 
+//     age: 94, 
+//     favoriteFoods: ["eggs", "meat", "fresh fruit"]
+//   },
+//   {
+//     name: "John Doe", 
+//     age: 34, 
+//     favoriteFoods: ["eggs", "fish", "vegetables"]
+//   }
+// ]
 
 const createManyPeople = (arrayOfPeople, done) => {
   Person.create(arrayOfPeople, (err, data) => {
@@ -63,7 +63,10 @@ const createManyPeople = (arrayOfPeople, done) => {
 };
 
 const findPeopleByName = (personName, done) => {
-  done(null /*, data*/);
+  Person.find({personName}, (err, data) => {
+    if(err) return console.err(err);
+    done(null, data);
+  })
 };
 
 const findOneByFood = (food, done) => {
