@@ -85,8 +85,13 @@ const findPersonById = (personId, done) => {
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
+  const user = Person.findById({_id:personId});
+  user = user.favoriteFoods.push(foodToAdd);
 
-  done(null /*, data*/);
+  user.save((err, data) => {
+    if(err) return console.err(err)
+    done(null, data);
+  })
 };
 
 const findAndUpdate = (personName, done) => {
