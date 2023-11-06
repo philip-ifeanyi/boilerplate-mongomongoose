@@ -32,8 +32,8 @@ const createAndSavePerson = (done) => {
   });
 };
 
-const createManyPeople = (done) => {
-  const arrayOfPeople = [
+const createManyPeople = (arrayOfPeople, done) => {
+  arrayOfPeople = [
     {
       name: "Jane Fonda", 
       age: 84, 
