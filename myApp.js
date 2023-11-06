@@ -32,7 +32,7 @@ const createAndSavePerson = (done) => {
   });
 };
 
-arrayOfPeople = [
+var arrayOfPeople = [
   {
     name: "Jane Fonda", 
     age: 84, 
