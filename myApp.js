@@ -125,8 +125,10 @@ const removeManyPeople = (done) => {
 
 const queryChain = (done) => {
   const foodToSearch = "burrito";
-
-  done(null /*, data*/);
+  Person.find({food: foodToSearch}).sort({name: asc}).limit(2).select('-age').exec((err, data) => {
+    if (err) return console.err(err)
+    done(null, data);
+  });
 };
 
 // app.get('/', (req, res) => {
